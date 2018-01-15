@@ -7,7 +7,7 @@ import java.io.IOException;
 public class ConsoleReader {
 
 	public static void main(String[] args) throws IOException {
-		
+
 		// Setup reading from console
 		InputStreamReader consoleInputStreamReader = new InputStreamReader(System.in);
 		BufferedReader consoleInputBufferedReader = new BufferedReader(consoleInputStreamReader);
@@ -26,14 +26,28 @@ public class ConsoleReader {
 		
 		// Parse string into int
 		int port = Integer.parseInt(portAsString);
-		
+
 		// Pretty-print this to console
 		System.out.println("Server ip: " + ipAddress + ":" + port);
-		
+
 		// Create a server object
 		Server httpServer = new Server(ipAddress, port);
 		httpServer.start();
 		httpServer.printServerProperties();
+
+		// Illustrate class member
+		Server sshServer = new Server("0.0.0.0", 22);
+		Server ftpServer = new Server("0.0.0.0", 21);
+		Server smtpServer = new Server("0.0.0.0", 25);
+
+		System.out.println(sshServer.getCounter());
+
+		// Print the static member getNumberOfServers
+		System.out.println(sshServer.getNumberOfServers());
+
+		// We can call static methods using an object reference
+		// However, it is not considered appropriate and gives a warning
+		System.out.println(sshServer.getNumberOfServers());
 	}
 
 }
