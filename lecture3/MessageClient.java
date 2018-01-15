@@ -7,19 +7,23 @@ public class MessageClient {
 		String chatMessageSerialized = aChatMessage.serialize();
 		System.out.println(chatMessageSerialized);
 
-		MailMessage aMailMessage = new MailMessage("andreas", "espen", "Hilsen", "hello");
-		String mailMessageSerialized = aMailMessage.serialize();
-		System.out.println(mailMessageSerialized);
+		Mail aMail = new Mail("andreas", "espen", "Hilsen", "hello");
+		String mailSerialized = aMail.serialize();
+		System.out.println(mailSerialized);
 
-		// Where does this metod come from? It is not in the MailMessage class
-		String mailBody = aMailMessage.getBody();
+		// Where does this metod come from? It is not in the Mail class
+		String mailBody = aMail.getBody();
 		System.out.println(mailBody);
 
+		// Why is this allowed? (hint: is-a)
+		Message aMessageObject = aMail;
+
 		// Polymorphism
-		Message aMessageObject = aMailMessage;
+		// Which implementation of serialize() is called?
 		System.out.println(aMessageObject.serialize());
 
-		Message[] arrayOfMessages = {aChatMessage, aMailMessage};
+		// A use-case for polymorphism
+		Message[] arrayOfMessages = {aChatMessage, aMail};
 
 		for (int i = 0; i < 2; i++) {
 			String serializedMessage = arrayOfMessages[i].serialize();

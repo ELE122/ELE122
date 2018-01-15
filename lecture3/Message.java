@@ -11,10 +11,6 @@ public class Message {
 		this.body = body;
 	}
 
-	public static void test() {
-		System.out.println("superclass");
-	}
-
 	public String getSender() {
 		return sender;
 	}
@@ -40,7 +36,6 @@ public class Message {
 	}
 
 	public String serialize() {
-		String serializedSegment = sender + "," + receiver + "," + body;
-		return serializedSegment;
+		return sender + "," + receiver + "," + body;
 	}
 }

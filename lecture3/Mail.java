@@ -1,10 +1,10 @@
 package lecture3;
 
-public class MailMessage extends Message {
+public class Mail extends Message {
 
 	private String subject;
 
-	public MailMessage(String sender, String receiver, String body, String subject) {
+	public Mail(String sender, String receiver, String body, String subject) {
 		super(sender, receiver, body);
 		this.subject = subject;
 	}
@@ -17,6 +17,8 @@ public class MailMessage extends Message {
 		this.subject = subject;
 	}
 
+	// Here we override serialize() from Message since we want a
+	// different behavior
 	public String serialize() {
 		String serializedSegment = getSender() + "," +
 				getReceiver() + "," + subject + "," + getBody();
