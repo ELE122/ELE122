@@ -1,21 +1,20 @@
 package lecture8;
 
-public class PrimeCalculator {
+public class PrimeCalculatorThread extends Thread {
 
 	private long numberToCheck;
 	
-	public PrimeCalculator (long numberToCheck) {
+	public PrimeCalculatorThread (long numberToCheck) {
 		this.numberToCheck = numberToCheck;
 	}
 	
-	public void calculate() {
+	public void run() {
+		calculate();
+	}
+	
+	private void calculate() {
 		boolean isPrime = isNumberPrime(numberToCheck);
-		if(isPrime) {
-			System.out.println(numberToCheck + " is a prime");
-		}
-		else {
-			System.out.println(numberToCheck + " is not a prime");
-		}
+		System.out.println(numberToCheck + " is" + (isPrime ? "" : " not") + " a prime");
 	}
 	
     private static boolean isNumberPrime(long i) {
